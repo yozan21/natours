@@ -67,7 +67,8 @@ const createBookingCheckout = async (session) => {
   ).id;
 
   console.log(sessionWithLineItems);
-  const price = sessionWithLineItems.line_items[0].price_data.unit_amount / 100;
+  const price =
+    sessionWithLineItems.line_items.data[0].price_data.unit_amount / 100;
 
   await Booking.create({ tour, user, price });
 };
