@@ -1,5 +1,6 @@
 /* eslint-disable*/
 
+import { showAlert } from './alert';
 import { login, logout } from './login';
 import { displayMap } from './mapBox';
 import { bookTour } from './stripe';
@@ -76,3 +77,6 @@ if (bookBtn) {
     bookTour(tourId);
   });
 }
+
+const alertMessage = document.querySelector('body').dataset.alert;
+if (alertMessage) showAlert('success', alertMessage, 7);
