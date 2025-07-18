@@ -65,6 +65,8 @@ const createBookingCheckout = async (session) => {
   const user = (
     await User.findOne({ email: sessionWithLineItems.customer_email })
   ).id;
+
+  console.log(sessionWithLineItems);
   const price = sessionWithLineItems.line_items[0].price_data.unit_amount / 100;
 
   await Booking.create({ tour, user, price });
