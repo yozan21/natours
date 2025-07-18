@@ -21,7 +21,7 @@ const createSendToken = (user, code, req, res) => {
     ),
     httpOnly: true,
     sameSite: 'Lax',
-    secure: req.headers('X-Forwarded-For') === 'https' || req.secure,
+    secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
   };
 
   res.cookie('jwt', token, cookieOptions);
