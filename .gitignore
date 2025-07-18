@@ -1,0 +1,10 @@
+/* Cache */
+.parcel-cache
+
+//Files
+package-lock.json
+*.env
+
+//Folders
+node_modules
+dev-data
