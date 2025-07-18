@@ -51,7 +51,6 @@ const sendDevError = (err, req, res) => {
     });
   }
   //RENDERED Error
-  console.log(err);
   res.status(err.statusCode).render('error', {
     title: 'Something went wrong!',
     msg: err.message,
@@ -68,6 +67,7 @@ const sendProdError = (err, req, res) => {
       });
     }
     // Programming or other unknown error: don't leak error details
+    console.error(`Error💥: ${err}`);
     return res.status(500).json({
       status: 'error',
       message: 'Something went very wrong!',
@@ -76,11 +76,13 @@ const sendProdError = (err, req, res) => {
   //RENDERED Error
   if (err.isOperational) {
     // Operational, trusted error: send message to client
+    console.error(`Error💥: ${err}`);
     return res.status(err.statusCode).render('error', {
       title: 'Something went wrong!',
       msg: err.message,
     });
   }
+  console.error(`Error💥: ${err}`);
   return res.status(err.statusCode).render('error', {
     title: 'Something went wrong!',
     msg: 'Please try again later',
