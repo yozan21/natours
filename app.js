@@ -31,12 +31,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(`${__dirname}/public`));
 
 //CORS issues
-app.use(
-  cors({
-    origin: 'http://localhost:3000', // Your frontend origin
-    credentials: true, // REQUIRED to send cookies
-  }),
-);
+app.use(cors());
 
 //Helmet middleware
 // app.use(helmet());
